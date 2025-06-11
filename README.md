@@ -16,6 +16,8 @@ You can use this tool with docker, GitHub Codespaces or you can configure your o
 
     # Install project dependencies
     pip install -r requirements.txt
+    # This installs the Finnish spaCy model fi-core-news-lg. If not,
+    # run: python -m spacy download fi_core_news_lg
     # Build custom spacy model
     # Link local custon model library to environment libraries so presidio can load it
     cd train_custom_spacy_model

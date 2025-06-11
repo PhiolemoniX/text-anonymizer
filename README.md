@@ -130,7 +130,7 @@ How to use:
         --encoding ENCODING   Source encoding. Default: UTF-8
         --debug DEBUG         Toggle debug logging. Default: False
         --recognizers RECOGNIZERS
-                              Override active recognizers. Available options: email, phone, ssn, file_name, ip_address, iban, registration_plate, address, blockist, grantlist, property_id, name_fi, name_en, street_address
+                             Override active recognizers. Available options: email, phone, ssn, file_name, ip_address, iban, registration_plate, address, blocklist, grantlist, property_id, name_fi, name_en, street_address
       
       Example: python anonymize_csv.py file_in.csv file_out.csv --column_name=text
 

@@ -1,8 +1,19 @@
+"""Simple script for testing the custom Finnish spaCy model."""
+
+import json
+from pathlib import Path
+
 import spacy
 
-model = "../custom_spacy_model/fi_datahel_spacy-0.0.1"
+BASE_DIR = Path(__file__).resolve().parent.parent
+META_PATH = BASE_DIR / "custom_spacy_model" / "meta.json"
 
-nlp = spacy.load(model)
+with META_PATH.open() as f:
+    version = json.load(f)["version"]
+
+model_path = BASE_DIR / "custom_spacy_model" / f"fi_datahel_spacy-{version}"
+
+nlp = spacy.load(str(model_path))
 
 text_fi = "Jaakko söi puuroa aurinkoisena päivänä Helsingissä vartiokylän puistossa, osoitteessa ylerminkuja 6. " \
            "Jaakko Parantainen käy mielelllään kalassa Helsingin itäpuolella (kaukana) yhdeksän kilometrin päässä sijaitsevassa kallion kaupunginosassa, " \

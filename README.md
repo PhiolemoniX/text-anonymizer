@@ -25,6 +25,19 @@ You can use this tool with docker, GitHub Codespaces or you can configure your o
     cd ..
     pip install -e custom_spacy_model
 
+    OR
+
+    python -m venv venv
+    source venv/bin/activate
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+    pip install tabulate
+    python -m spacy download fi_core_news_lg
+     cd train_custom_spacy_model
+    ./train_custom_spacy_model.sh
+    cd ..
+    pip install -e custom_spacy_model
+
 
 ### Installation using docker
 

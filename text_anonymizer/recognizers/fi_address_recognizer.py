@@ -54,7 +54,7 @@ class FiAddressRecognizer(PatternRecognizer):
     ) -> List[RecognizerResult]:
         return super().analyze(text, entities, nlp_artifacts, regex_flags=re.X)
 
-    STOPWORDS = ['hteystieto']
+    STOPWORDS = ['yhteystieto']
 
     def invalidate_result(self, pattern_text: str) -> bool:
         """

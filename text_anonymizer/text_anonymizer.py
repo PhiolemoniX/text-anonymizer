@@ -163,9 +163,10 @@ class TextAnonymizer:
 
         if RECOGNIZER_SPACY_FI in self.recognizer_configuration:
             # Finnish spacy recognizer
-            finnish_spacy_recognizer = SpacyRecognizer(ner_strength=0.90,
-                                                       supported_entities=['PERSON', 'DATE'],
-                                                       supported_language='fi')
+            finnish_spacy_recognizer = SpacyRecognizer(
+                ner_strength=0.90,
+                supported_entities=['PERSON', 'DATE', 'LOC', 'GPE'],
+                supported_language='fi')
             self.registry.add_recognizer(finnish_spacy_recognizer)
 
         if RECOGNIZER_SPACY_EN in self.recognizer_configuration:
@@ -176,8 +177,10 @@ class TextAnonymizer:
             self.registry.add_recognizer(english_spacy_recognizer)
 
         if RECOGNIZER_SPACY_ADDRESS in self.recognizer_configuration:
-            # Finnish spacy recognizer
-            address_spacy_recognizer = SpacyAddressRecognizer(anonymize_full_string=False, supported_entity='ADDRESS')
+            # Finnish spacy address recognizer
+            address_spacy_recognizer = SpacyAddressRecognizer(
+                anonymize_full_string=True,
+                supported_entity='ADDRESS')
             self.registry.add_recognizer(address_spacy_recognizer)
 
         # Init engines

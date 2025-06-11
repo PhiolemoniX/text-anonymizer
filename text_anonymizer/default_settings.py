@@ -17,7 +17,10 @@ DEFAULT_SETTINGS.mask_mapppings = {
     'REAL_PROPERTY_ID': 'KIINTEISTÖTUNNUS',
     'PERSON': 'NIMI',
     'GRANTLISTED': 'GRANTLISTED',
-    'FILENAME': 'TIEDOSTONIMI'
+    'FILENAME': 'TIEDOSTONIMI',
+    'DATE': 'PÄIVÄMÄÄRÄ',
+    'LOC': 'PAIKKA',
+    'GPE': 'PAIKKA'
 }
 DEFAULT_SETTINGS.mask_mappings_debug = {
     'ETUNIMI': 'VOIKKO_ETU_NIMI',
@@ -37,6 +40,9 @@ DEFAULT_SETTINGS.mask_mappings_debug = {
     'OTHER': 'TUNNISTE',
     'REAL_PROPERTY_ID': 'KIINTEISTÖTUNNUS',
     'PERSON': 'SPACY_NIMI',
+    'DATE': 'SPACY_PÄIVÄMÄÄRÄ',
+    'LOC': 'SPACY_PAIKKA',
+    'GPE': 'SPACY_PAIKKA',
 }
 
 DEFAULT_SETTINGS.operator_config = {
@@ -50,6 +56,7 @@ DEFAULT_SETTINGS.recognizer_configuration = [RECOGNIZER_EMAIL,
                                              RECOGNIZER_IP,
                                              RECOGNIZER_IBAN,
                                              RECOGNIZER_REGISTRATION_PLATE,
+                                             RECOGNIZER_ADDRESS,
                                              RECOGNIZER_BLOCKLIST,
                                              RECOGNIZER_GRANTLIST,
                                              RECOGNIZER_PROPERTY,

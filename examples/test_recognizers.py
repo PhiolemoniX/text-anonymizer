@@ -2,6 +2,9 @@ import phonenumbers
 from presidio_analyzer import AnalyzerEngine, RecognizerRegistry
 from presidio_analyzer.nlp_engine import NlpEngineProvider
 from presidio_analyzer.predefined_recognizers import EmailRecognizer, PhoneRecognizer, IpRecognizer, IbanRecognizer
+import json
+from pathlib import Path
+import pytest
 
 from text_anonymizer.recognizers.fi_address_recognizer import FiAddressRecognizer
 from text_anonymizer.recognizers.fi_property_identifier_recognizer import FiRealPropertyIdentifierRecognizer
@@ -16,6 +19,17 @@ TEST_TEXT = "Hello, my name is David. "
 from text_anonymizer.recognizers.fi_ssn_recognizer import FiSsnRecognizer
 
 config_file = "../text_anonymizer/config/languages-config.yml"
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+META_PATH = BASE_DIR / "custom_spacy_model" / "meta.json"
+with META_PATH.open() as f:
+    version = json.load(f)["version"]
+model_path = BASE_DIR / "custom_spacy_model" / f"fi_datahel_spacy-{version}"
+
+if not model_path.exists():
+    pytest.skip(
+        f"spaCy model directory {model_path} not found", allow_module_level=True
+    )
 
 # Create NLP engine based on configuration file
 provider = NlpEngineProvider(conf_file=config_file)

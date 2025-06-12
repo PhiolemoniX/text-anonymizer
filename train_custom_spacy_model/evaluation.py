@@ -1,8 +1,13 @@
 import datetime
+import json
+from pathlib import Path
 
 from spacy import load
 from spacy.training import Example
 from tabulate import tabulate
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+META_PATH = BASE_DIR / "custom_spacy_model" / "meta.json"
 
 '''
 This script evaluates the trained model with a set of sentences.
@@ -13,9 +18,12 @@ The script evaluates the model with the evaluation data and prints the results.
 
 def evaluate_nlp(nlp=None):
     if not nlp:
-        # Load trained model
-        model_path = "../custom_spacy_model/fi_datahel_spacy-0.0.2"
-        nlp = load(model_path)
+        # Load trained model dynamically using meta version
+        with META_PATH.open() as f:
+            version = json.load(f)["version"]
+
+        model_path = BASE_DIR / "custom_spacy_model" / f"fi_datahel_spacy-{version}"
+        nlp = load(str(model_path))
 
     # Entity types
     LOC = 'LOC'

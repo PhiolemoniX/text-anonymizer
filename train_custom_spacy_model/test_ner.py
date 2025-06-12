@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import spacy
+import pytest
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 META_PATH = BASE_DIR / "custom_spacy_model" / "meta.json"
@@ -12,6 +13,9 @@ with META_PATH.open() as f:
     version = json.load(f)["version"]
 
 model_path = BASE_DIR / "custom_spacy_model" / f"fi_datahel_spacy-{version}"
+
+if not model_path.exists():
+    pytest.skip(f"spaCy model directory {model_path} not found", allow_module_level=True)
 
 nlp = spacy.load(str(model_path))
 

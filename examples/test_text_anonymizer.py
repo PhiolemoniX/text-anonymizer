@@ -1,6 +1,9 @@
 # Test
 from text_anonymizer import TextAnonymizer
 import time
+import json
+from pathlib import Path
+import pytest
 
 '''
 Example code to test TextAnonymizer
@@ -8,6 +11,18 @@ Also used in the performance testing.
 '''
 
 ITERATIONS = 10
+
+# Skip test if Finnish spaCy model directory is missing
+BASE_DIR = Path(__file__).resolve().parent.parent
+META_PATH = BASE_DIR / "custom_spacy_model" / "meta.json"
+with META_PATH.open() as f:
+    version = json.load(f)["version"]
+model_path = BASE_DIR / "custom_spacy_model" / f"fi_datahel_spacy-{version}"
+
+if not model_path.exists():
+    pytest.skip(
+        f"spaCy model directory {model_path} not found", allow_module_level=True
+    )
 
 # Init anonymizer to work in mask mode and two languages
 text_anonymizer = TextAnonymizer(languages=['fi'])

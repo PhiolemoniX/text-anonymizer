@@ -3,6 +3,8 @@ import datetime
 import itertools
 import os
 import random
+import json
+from pathlib import Path
 
 import spacy
 from spacy.training import Example
@@ -31,7 +33,14 @@ NAME_ENTITY = 'PERSON'
 
 base_model = "fi_core_news_lg"
 nlp = spacy.load(base_model)
-target_path = "../custom_spacy_model/fi_datahel_spacy-0.0.2"
+
+def get_model_version() -> str:
+    meta_path = Path(__file__).resolve().parent.parent / "custom_spacy_model" / "meta.json"
+    with meta_path.open() as f:
+        return json.load(f)["version"]
+
+model_version = get_model_version()
+target_path = f"../custom_spacy_model/fi_datahel_spacy-{model_version}"
 
 this_dir, this_filename = os.path.split(__file__)
 

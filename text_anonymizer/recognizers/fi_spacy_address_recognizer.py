@@ -20,15 +20,15 @@ class SpacyAddressRecognizer(LocalRecognizer):
     DEFAULT_PATTERNS = [
         [
             {'ENT_TYPE': 'PERSON', 'OP': '+'},
-            {"TEXT": {"REGEX": "([0-9]{1,4}})(\s)?([A-Za-z]{0,1})?(\s)?([0-9]{0,4})?"}, 'OP': '+'}
+            {"TEXT": {"REGEX": r"([0-9]{1,4})(\s)?([A-Za-z]{0,1})?(\s)?([0-9]{0,4})?"}, 'OP': '+'}
         ],
         [
             {'ENT_TYPE': 'LOC', 'OP': '+'},
-            {"TEXT": {"REGEX": "([0-9]{1,4}})(\s)?([A-Za-z]{0,1})?(\s)?([0-9]{0,4})?"}, 'OP': '+'}
+            {"TEXT": {"REGEX": r"([0-9]{1,4})(\s)?([A-Za-z]{0,1})?(\s)?([0-9]{0,4})?"}, 'OP': '+'}
         ],
         [
             {'ENT_TYPE': 'GPE', 'OP': '+'},
-            {"TEXT": {"REGEX": "([0-9]{1,4}})(\s)?([A-Za-z]{0,1})?(\s)?([0-9]{0,4})?"}, 'OP': '+'}
+            {"TEXT": {"REGEX": r"([0-9]{1,4})(\s)?([A-Za-z]{0,1})?(\s)?([0-9]{0,4})?"}, 'OP': '+'}
         ],
         [
             {'ENT_TYPE': 'PERSON', 'OP': '+'},

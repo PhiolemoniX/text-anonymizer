@@ -243,7 +243,8 @@ Fine tune the base spacy model with custom data.
    cd train_custom_spacy_model
    ./train_custom_spacy_model.sh
 
-This will update custom spacy model in custom_spacy_model folder. You can then run evaluation script to evaluate the model.
+Running the script populates the spaCy model directory `custom_spacy_model/fi_datahel_spacy-0.0.2`. Tests expect this directory to exist.
+You can then run the evaluation script to evaluate the model.
 
 ## Model evaluation
 
@@ -291,6 +292,19 @@ Date: 23.04.2024
 | names   |      97.54 |        5 |      5000 |
 | streets |      96.9  |       31 |      1000 |
 
+
+## Running tests
+
+Ensure that the custom spaCy model is available before running the test suite.
+If the folder `custom_spacy_model/fi_datahel_spacy-0.0.2` is missing, create it
+by executing the training script:
+
+```bash
+cd train_custom_spacy_model
+./train_custom_spacy_model.sh
+```
+
+After the model has been trained you can run the tests with `pytest`.
 
 ## Acknowledgements
 

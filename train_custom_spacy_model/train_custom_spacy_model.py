@@ -69,7 +69,7 @@ _ORGANIZATIONS_DATA_FILE = os.path.join(this_dir, _ORGANIZATIONS_FILE_PATH)
 _ORGANIZATIONS = []
 
 _SKIP_FILE_PATH = "../test/data/ohitettavat.txt"
-_SKIP_DATA_FILE = os.path.join(this_dir, _ORGANIZATIONS_FILE_PATH)
+_SKIP_DATA_FILE = os.path.join(this_dir, _SKIP_FILE_PATH)
 _SKIP = []
 
 with open(_LAST_NAMES_DATA_FILE, 'r') as data:

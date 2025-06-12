@@ -6,8 +6,7 @@ setup(
     description='Package for custom spacy models.',
     author='DataHel',
     author_email='',
-    packages=[
-
-    ],
+    packages=['custom_spacy_model'],
+    package_dir={'custom_spacy_model': '.'},
     install_requires=[]
 )
